@@ -1,18 +1,5 @@
-﻿#include <iostream>
-#include <string>
-#include <Windows.h>
-#include <regex>
-#define _USE_MATH_DEFINES
-#include <math.h>
-#include <fstream>
-#include <string>
-using namespace std;
+﻿#include "Header.h"
 
-bool isValidName (string str)
-{
-	regex reg("^[A-Z]{1}[a-z]{2,31}");
-	return regex_search(str, reg);
-}
 
 int main()
 {
@@ -21,7 +8,7 @@ int main()
 	SetConsoleOutputCP(1251);
 	
 	//#1
-	/*
+	
 	cout << "Введите строку (латиница):" << endl;
 	string s;
 	cin >> s;
@@ -66,30 +53,67 @@ int main()
 	cin >> r;
 	double l = 2 * M_PI * r;
 	cout << "Длина окружности равна: " << trunc(l*1000)/1000 << endl;
-	*/
-
+	
+	
 	fstream fs;
-	fs.open("a.txt");
-	while (true)
-	{
-		string text;
-		string line;
-		cout << "Введите произвольную строку: " << endl;
-		getline(cin, text);
-		if (text == "erase")
-		{
-			fs.trunc;
-		}
-		else if (text == "read")
-		{
-			while (getline(fs, line))
-			{
+	string s;
+
+	fs.open("a.txt", ios::out);
+	while (1) {
+		cout << "Введите строку:\n";
+		getline(cin, s);
+
+
+		if (s == "read") {
+			fs.close();
+			fs.open("a.txt", ios::in);
+			string line;
+			while (getline(fs, line)) {
 				cout << line << endl;
 			}
 		}
-		else if (text == "exit") { break; }
-		else { fs << text << endl; }
+
+		else if (s == "erase") {
+			fs.close();
+			remove("a.txt");
+			fs.open("a.txt", ios::in);
+		}
+		else if (s == "exit") {
+			break;
+		}
+		else {
+			fs.close();
+			fs.open("a.txt", ios::app);
+			fs << s << endl;
+		}
 	}
-	fs.close();
+	try {
+		fs.close();
+	}
+	catch (...) {
+		cout << "Нельзя закрыть файл";
+	}
+	
+	//4
+	
+	vector<float> v;
+	v.push_back(1);
+	v.push_back(4);
+	v.push_back(9);
+	v.push_back(16);
+	v.push_back(25);
+	vprint(v);
+	
+	vector<float>::iterator i = v.begin() + 3;
+	v.insert(i, 10.667f);
+	vprint(v);
+
+	v.pop_back();
+	vprint(v);
+	
+	Settings s1;
+	s1.add("1", 120);
+	s1.get("1");
+	s1.print();
 }
 
