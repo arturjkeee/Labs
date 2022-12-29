@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="FinalTask.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AVLNodeClass.h" />
+    <ClInclude Include="NodeClass.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
