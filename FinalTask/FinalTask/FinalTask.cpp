@@ -230,5 +230,8 @@ int main()
         t.insert(x);
     }
     t.display();
+    cin.get();
+    cin.get();
+
 }
  
