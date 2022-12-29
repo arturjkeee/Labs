@@ -1,2 +1,3 @@
 ﻿  FinalTask.cpp
+C:\GitHub\Labs\FinalTask\FinalTask\AVLNodeClass.h(115): warning C4715: AVLNode::search: значение возвращается не при всех путях выполнения
   FinalTask.vcxproj -> C:\GitHub\Labs\FinalTask\x64\Debug\FinalTask.exe

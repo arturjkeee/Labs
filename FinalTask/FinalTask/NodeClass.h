@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Windows.h"
 using namespace std;
 
 class NodeClass
@@ -8,14 +9,15 @@ class NodeClass
 public:
     struct node
     {
-        int data;
+        int key;
+        unsigned char height;
         node* left;
         node* right;
-        int height;
+        node(int k) { key = k; left = right = 0; height = 1; }
     };
 
-    virtual node* insert(int x, node* t) = 0;
-    virtual node* remove(int x, node* t) = 0;
-    virtual int findIndex(int x, node* t, int i = 0) = 0;
+    virtual node* insert(node* p, int k) = 0;
+    virtual node* remove(node* p, int k) = 0;
+    virtual bool search(node* p, int k) = 0;
 };
 
